@@ -8,6 +8,10 @@
 
 API repository: https://github.com/ionhristiniuc/ToDoList
 
+## A few notes:
+Currently you need to register a user using the API, UI does not support it at the moment.
+Updating a todo title using the UI is also not supported at the moment.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.5.
 
 ## Development server
