@@ -6,12 +6,11 @@ import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoItemComponent } from './todo-list/todo-item/todo-item.component';
 import { HeaderComponent } from './header/header.component';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TodosStorageService } from "./services/todos-storage.service";
 import { HttpClientModule } from "@angular/common/http";
-import { AuthorizationService } from "./services/authorization.service";
 import { AuthComponent } from './auth/auth.component';
-import { AuthenticationService } from './services/authentication.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -25,9 +24,10 @@ import { AuthenticationService } from './services/authentication.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [TodosStorageService, AuthorizationService, AuthenticationService],
+  providers: [TodosStorageService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

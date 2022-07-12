@@ -1,12 +1,12 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { throwError } from 'rxjs';
-import { AuthorizationService } from "./authorization.service";
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
+import { TokenService } from './token.service';
 
 @Injectable({providedIn: 'root'})
 export class HttpClientHelper {
 
-  constructor(private http: HttpClient, private authorizationService: AuthorizationService) {
+  constructor(private http: HttpClient, private tokenService: TokenService) {
   }
 
   getItems<T>(url: string) {
@@ -57,21 +57,10 @@ export class HttpClientHelper {
   private getCommonHeaders(includeAuth: boolean = true): any {
     let headers: any = {};
 
-    if (includeAuth && this.authorizationService.isAuthenticated) {
-      headers['Authorization'] = `Bearer ${this.authorizationService.token}`;
+    if (includeAuth && this.tokenService.isAuthenticated) {
+      headers['Authorization'] = `Bearer ${this.tokenService.currentUserTokenValue}`;
     }
 
     return new HttpHeaders(headers);
-  }
-
-  private handleError(error: HttpErrorResponse) {
-    if (error.status === 0) {
-      console.error('An error occurred:', error.error);
-    } else {
-      console.error(
-        `Backend returned code ${error.status}, body was: `, error.error);
-    }
-
-    return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 }

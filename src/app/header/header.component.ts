@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from "../services/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  currentUserToken: string = '';
+  constructor(private authenticationService: AuthService, private router: Router) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUserToken = x);
+  }
 
   ngOnInit(): void {
   }
 
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/auth']);
+  }
 }
