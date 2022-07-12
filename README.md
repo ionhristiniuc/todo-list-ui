@@ -12,6 +12,12 @@ API repository: https://github.com/ionhristiniuc/ToDoList
 Currently you need to register a user using the API, UI does not support it at the moment.
 Updating a todo title using the UI is also not supported at the moment.
 
+To be done: 
+* Add proper error handling
+* Add unit tests
+* Add page for registering users
+* Implement the update todo logic
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.5.
 
 ## Development server
