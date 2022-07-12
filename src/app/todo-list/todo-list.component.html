@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <h2>Todo application <span class="badge badge-secondary">New</span></h2>
+      <div class="input-group mb-3">
+        <input [(ngModel)]="newTask.name" type="text" class="form-control" placeholder="Todo Title"
+               aria-label="Title" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button (click)="addToList()" class="btn btn-outline-secondary" type="button" id="button-addon2">Add Todo</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div *ngFor="let item of todoItems; let index = index;" class="card col-md-12">
+      <div class="card-body">
+        <h5 class="card-title">{{item.name}}</h5>
+        <div class="btn-group-sm" role="group">
+          <button *ngIf="!item.isCompleted" (click)="markAsCompleted(index)" type="button"
+                  class="btn btn-success">Mark Completed</button>
+          <button (click)="edit(item)" type="button"
+                  class="btn btn-secondary">Edit</button>
+          <button (click)="deleteTask(index)" type="button"
+                  class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
