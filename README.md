@@ -1,4 +1,4 @@
-# TodoListUi
+# TodoListUI
 
 ## Application for managing todo items.
 
